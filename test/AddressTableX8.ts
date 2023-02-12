@@ -18,10 +18,20 @@ describe("AddressTableX8", function () {
   }
 
   describe("Deployment", function () {
-    it("Should deploy", async function () {
+    it("Is empty at the start", async function () {
       const { addressTableX8, owner, otherAccount } = await loadFixture(deployOneYearLockFixture);
-
+      
       expect(await addressTableX8.length()).to.equal(0);
     });
+
+    it("Can add 1 element and retrieve it", async function () {
+      const { addressTableX8, owner, otherAccount } = await loadFixture(deployOneYearLockFixture);
+
+      await addressTableX8.add("0x00000000000000000000000000000000beefb33f")
+      
+      expect(await addressTableX8.length()).to.equal(1);
+      expect(await addressTableX8.table(0)).to.hexEqual("0x00000000000000000000000000000000beefb33f");
+    });
+
   });
 });

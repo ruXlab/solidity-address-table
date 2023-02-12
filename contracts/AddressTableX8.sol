@@ -29,7 +29,7 @@ contract AddressTableX8 {
         table.push(addr);
     }
 
-    function add(address[] calldata addresses) external onlyOwner {
+    function addMany(address[] calldata addresses) external onlyOwner {
         require(table.length + addresses.length < 0xff, "AddressBook overflow");
 
         for(uint256 i; i < addresses.length; ) {
@@ -39,5 +39,6 @@ contract AddressTableX8 {
             }
         }
     }
+
 
 }
