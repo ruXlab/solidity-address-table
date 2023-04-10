@@ -12,25 +12,27 @@ One of the tricks to shorten the calldata is to pass addresses as indices. Indee
 
 ## Implementations
 
-There are number of implementations that might would be better suited for specific project
+There are a number of implementations that might be better suited for specific projects.
+
+Highlights 
+* Efficiently store Ethereum addresses in an internal array within contract.
+* Add single or multiple addresses using `_addressBookAdd` and `_addressBookAddMany` functions.
+* Retrieve the total number of addresses using the _addressBookSize function.
 
 ### EmbeddedAddressTableX8
 
-[EmbeddedAddressTableX8](./contracts//EmbeddedAddressTableX8.sol) is a Solidity contract module designed to efficiently store and manage a collection of Ethereum addresses. It provides an internal array-based storage solution with a maximum capacity of 255 addresses. This module is well-suited for applications where a simple address registry with basic management functionality is needed.
+[EmbeddedAddressTableX8](./contracts/EmbeddedAddressTableX8.sol) is a Solidity contract module designed to efficiently store and manage a collection of Ethereum addresses. It provides an internal array-based storage solution with a maximum capacity of 255 addresses. This module is well-suited for applications where a simple address registry with basic management functionality is needed.
 
-The contract exposes a set of internal functions to add, remove, and query addresses, making it easy to integrate with other contracts. It also includes a derived test contract, EmbeddedAddressTableX8Test, which allows for convenient testing of the core functionality.
+### EmbeddedAddressTableX16
 
-Highlights 
-* Efficiently store up to 254 Ethereum addresses in an internal array.
-* Add single or multiple addresses using _addressBookAdd and _addressBookAddMany functions.
-* Retrieve the total number of addresses using the _addressBookSize function.
-* Prevent the addition of duplicate and zero addresses.
-* Ensure that the order of added addresses is maintained.
+[EmbeddedAddressTableX16](./contracts/EmbeddedAddressTableX16.sol) is a similar contract module to `EmbeddedAddressTableX8`, with the difference being that it can store up to 65535 Ethereum addresses, providing a larger capacity for address storage.
+
+Both contracts expose a set of internal functions to add, remove, and query addresses, making it easy to integrate with other contracts. They also include derived test contracts (EmbeddedAddressTableX8Test and EmbeddedAddressTableX16Test) which allow for convenient testing of the core functionality.
+
 
 #### Usage
 
-To integrate `EmbeddedAddressTableX8` into your contract, inherit from it and utilize the provided internal functions for managing addresses. This module is abstract and not intended for direct deployment. The derived [EmbeddedAddressTableX8Test](./contracts/test/EmbeddedAddressTableX8Test.sol) contract can be used for testing purposes, allowing you to verify the functionality and behavior of the core contract.
-
+To integrate either `EmbeddedAddressTableX8` or `EmbeddedAddressTableX16` into your contract, inherit from the desired contract and utilize the provided internal functions for managing addresses. These modules are abstract and not intended for direct deployment. The derived test contracts [EmbeddedAddressTableX8Test](./contracts/test/EmbeddedAddressTableX8Test.sol) and [EmbeddedAddressTableX16Test](./contracts/test/EmbeddedAddressTableX16Test.sol) can be used for testing purposes, allowing you to verify the functionality and behavior of the core contracts.
 
 
 # Disclaimer 

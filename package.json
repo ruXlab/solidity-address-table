@@ -4,7 +4,9 @@
   "author": "ruX",
   "scripts": {
     "clean": "npx hardhat clean",
-    "EmbeddedAddressTableX8:test": "hardhat test test/EmbeddedAddressTableX8.test.ts"
+    "test": "hardhat test",
+    "EmbeddedAddressTableX8:test": "hardhat test test/EmbeddedAddressTableX8.test.ts",
+    "EmbeddedAddressTableX16:test": "hardhat test test/EmbeddedAddressTableX16.test.ts"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
