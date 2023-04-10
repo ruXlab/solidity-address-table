@@ -25,7 +25,7 @@ contract AddressTableX8 {
     }
 
     function add(address addr) external onlyOwner {
-        require(table.length < 0xff, "AddressBook overflow");
+        require(table.length < 0xff, "AddressBook index overflow");
         table.push(addr);
     }
 

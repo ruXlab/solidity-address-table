@@ -14,6 +14,4 @@ interface IAddressTableX8 {
     function addMany(address[] calldata addresses) external ;
 
     function get(uint256 index) external returns (address);
-
-
 }
