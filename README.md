@@ -1,13 +1,19 @@
 # Solidity Address Table - L2 rollups gas saver ⛽ 
-This repository provides an contract that can be used to save the gas
 
-L2 Rollup blockchains(such as Arbitrum, Optimism, etc) can significantly reduce cost of the contract execution. As of now most of them are saving the call's calldata into underlying L1 blockchain(mostly Ethereum) and that can be **quite** expensive. 
+[![Build Status](https://github.com/ruXLab/solidity-address-table/actions/workflows/test.yml/badge.svg)](https://github.com/ruXLab/solidity-address-table/actions/workflows/test.yml)
+
+
+This repository provides a Solidity contract module that can be used to efficiently store and manage a collection of Ethereum addresses, helping to save gas costs on L2 Rollup blockchains such as Arbitrum and Optimism.
+
+L2 Rollup blockchains are becoming increasingly popular due to their ability to significantly reduce the cost of contract execution. However, these blockchains often save the calldata of calls into an underlying L1 blockchain, which can be quite expensive. The EmbeddedAddressTableX8 contract module allows you to store up to 255 Ethereum addresses in an internal array, making it easier and more cost-effective to manage your contracts on rollup chains.
+
+By using EmbeddedAddressTableX8, you can take advantage of the relatively cheap cost of calling contracts on rollup chains while also reducing the cost of storing and managing the calldata associated with those calls. This can help you optimize your gas usage and reduce the cost of running your contracts on L2 Rollup blockchains.
 
 Calling contracts on rollup chains is _(relativly)_ cheap, but their calldata can cost a lot.
 
 ## Solidity Address Book
 
-One of the tricks to shorten the calldata is to pass addresses as indices. Indeed, instead of passing **20 bytes** of `address` such as `	0xb38e8c17e38363af6ebdcb3dae12e0243582891d` (that's actually passed as a **32 bytes** word `000000000000000000000000b38e8c17e38363af6ebdcb3dae12e0243582891d`) we can simply use `0x44`(**ONE** byte, `uint8`) - index of the record in the address table.
+One of the tricks to shorten the calldata is to pass addresses as indices. Indeed, instead of passing **20 bytes** of `address` such as `0xb38e8c17e38363af6ebdcb3dae12e0243582891d` (that's actually passed as a **32 bytes** word `000000000000000000000000b38e8c17e38363af6ebdcb3dae12e0243582891d`) we can simply use `0x44`(**ONE** byte, `uint8`) - index of the record in the address table.
 
 
 ## Implementations
