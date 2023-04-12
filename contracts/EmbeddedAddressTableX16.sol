@@ -17,12 +17,12 @@ abstract contract EmbeddedAddressTableX16 {
     }
 
     function _addressBookAdd(address addr) internal {
-        require(addressTable.length < 65536, "AddressBook index overflow");
+        require(addressTable.length < 0xffff + 1, "AddressBook index overflow");
         addressTable.push(addr);
     }
 
     function _addressBookAddMany(address[] calldata addresses) internal {
-        require(addressTable.length + addresses.length < 65536, "AddressBook index overflow");
+        require(addressTable.length + addresses.length < 0xffff + 1, "AddressBook index overflow");
 
         for (uint256 i; i < addresses.length; ) {
             addressTable.push(addresses[i]);
